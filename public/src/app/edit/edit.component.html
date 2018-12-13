@@ -1,3 +1,16 @@
-<p>
-  edit works!
-</p>
+<div *ngIf="truck">
+  <form  (submit)="update(truck._id)">
+    <input type="text" name="truck.name" [(ngModel)]="truck.name" placeholder="name">
+    <p *ngIf="errors.name"> {{errors.name.message}}</p>
+    <br>
+    <input type="text" name="truck.style" [(ngModel)]="truck.style" placeholder="style">
+    <p *ngIf="errors.style"> {{errors.style.message}}</p>
+    <br>
+    <textarea name="truck.description" [(ngModel)]="truck.description" rows=5 cols=50></textarea>
+    <p *ngIf="errors.description"> {{errors.description.message}}</p>
+    <br>
+    <input type="submit" value="Update a Truck"/>
+    <button (click) = "delete(truck._id)">Delete</button>
+  </form>
+
+</div>

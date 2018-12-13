@@ -14,4 +14,21 @@ export class FoodtruckService {
   createTruck(foodTruck){
     return this._http.post('/foodtruck', foodTruck);
   }
+  getOne(id){
+    return this._http.get(`/foodtruck/${id}`);
+  }
+
+  addReview(id, review){
+    return this._http.post(`/foodtruck/${id}/review`, review);
+  }
+
+  updateOne(id, truck){
+    return this._http.put(`/foodtruck/${id}`, truck);
+  }
+
+  deleteOne(id){
+    return this._http.delete(`/foodtruck/${id}`);
+  }
+
+
 }

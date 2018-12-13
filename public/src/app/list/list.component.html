@@ -1,7 +1,8 @@
 <div *ngFor="let truck of trucks">
   <h2> {{truck.name}}</h2>
   <p> Style: {{truck.style}}</p>
-  <p> Rating: {{truck.avgreview}} </p> 
+  <p> Rating: {{truck.avgreview}} </p>
   <a [routerLink]="['/truck', truck._id]"><button>review</button></a>
-  <hr> 
+  <a [routerLink]="['/edit', truck._id]"><button>update</button></a>
+  <hr>
 </div>

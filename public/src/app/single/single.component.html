@@ -1,3 +1,35 @@
-<p>
-  single works!
-</p>
+<div *ngIf="truck">
+  <h1>{{truck.name}}</h1>
+  <p>Style: {{truck.style}}</p>
+  <p>Description: {{truck.description}}</p>
+  <p>Rating: {{truck.avgreview}}</p>
+
+  <div class="scrollables">
+    <div *ngFor="let r of truck.reviews">
+      <hr>
+      <p>{{r.name}}</p>
+      <p>{{r.comment}}</p>
+      <p>{{r.rating}}</p>
+    </div>
+  </div>
+
+  <fieldset>
+    <form (submit)="newRating(truck._id)">
+       <p>Name: <input type="text" name="newreview.name" [(ngModel)]="newreview.name" /></p>
+       <p>Rating:
+         <select name="newreview.rating" [(ngModel)]="newreview.rating">
+           <option value="5">★★★★★</option>
+           <option value="4">★★★★☆</option>
+           <option value="3">★★★☆☆</option>
+           <option value="2">★★☆☆☆</option>
+           <option value="1">★☆☆☆☆</option>
+         </select>
+       </p>
+       <p>Comment here:
+         <br>
+         <textarea name="newreview.comment" [(ngModel)]="newreview.comment" cols=50 rows=5></textarea>
+       </p>
+       <input type="submit" value="Leave a review!" />
+    </form>
+  </fieldset>
+</div>

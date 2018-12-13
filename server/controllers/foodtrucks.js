@@ -5,7 +5,7 @@ const Foodtruck = mongoose.model("Foodtruck");
 
 class Foodtrucks {
     getAll(req, res){
-        Foodtruck.find({}, function(err, foodtrucks){
+        Foodtruck.find({}).sort({"avgreview" : -1}).exec( function(err, foodtrucks){
             if(err){
                 res.json({"status": "not ok", "errors": err});
             }else{
@@ -34,6 +34,26 @@ class Foodtrucks {
                 res.json({"status": "ok"});
             }
         });
+    }
+
+    update(req, res){
+      Foodtruck.findOneAndUpdate({_id: req.params.id}, req.body, {runValidators: true}, function(err){
+        if(err){
+            res.json({"status": "not ok", "errors": err});
+        }else{
+            res.json({"status": "ok"});
+        }
+      })
+    }
+
+    delete(req, res){
+      Foodtruck.remove({_id: req.params.id}, function(err){
+        if(err){
+            res.json({"status": "not ok", "errors": err});
+        }else{
+            res.json({"status": "ok"});
+        }
+      })
     }
 }
 

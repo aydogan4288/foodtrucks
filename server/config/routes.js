@@ -8,5 +8,6 @@ module.exports = function(app){
     app.get("/foodtruck/:id", Foodtrucks.getId);
     app.post("/foodtruck", Foodtrucks.create);
     app.post('/foodtruck/:id/review', Reviews.addReview);
-
+    app.put('/foodtruck/:id', Foodtrucks.update);
+    app.delete('/foodtruck/:id', Foodtrucks.delete);
 }
